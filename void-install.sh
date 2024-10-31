@@ -102,9 +102,12 @@ echo "Copying XBPS keys..."
 mkdir -p /mnt/var/db/xbps/keys
 cp /var/db/xbps/keys/* /mnt/var/db/xbps/keys/
 
+# Ask for additional packages to install
+read -p "Enter any additional packages to install (space-separated, or leave blank for none): " ADDITIONAL_PKGS
+
 # Install base system
 echo "Installing base system..."
-XBPS_ARCH=$ARCH xbps-install -S -R "$REPO" -r /mnt base-system btrfs-progs cryptsetup nvim
+XBPS_ARCH=$ARCH xbps-install -S -R "$REPO" -r /mnt base-system btrfs-progs cryptsetup $ADDITIONAL_PKGS
 
 # Bind mount necessary filesystems
 echo "Binding mount filesystems..."
@@ -137,8 +140,8 @@ cp /proc/mounts /mnt/etc/mtab
 BTRFS_OPTS=$BTRFS_OPTS chroot /mnt /bin/bash -c "
 # Configure locales
 echo 'Configuring locales...'
-nvim /etc/default/libc-locales
-nvim /etc/locale.conf
+vi /etc/default/libc-locales
+vi /etc/locale.conf
 xbps-reconfigure -f glibc-locales
 
 # Set root password
