@@ -48,7 +48,7 @@ mkfs.btrfs -L void /dev/mapper/cryptroot
 
 # Mount and create subvolumes
 echo "Mounting and creating Btrfs subvolumes..."
-BTRFS_OPTS="rw,noatime,ssd,compress=zstd,space_cache,commit=120,lazytime"
+BTRFS_OPTS="rw,noatime,compress=zstd,commit=120,lazytime"
 mount -o $BTRFS_OPTS /dev/mapper/cryptroot /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
