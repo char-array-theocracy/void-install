@@ -223,9 +223,9 @@ passwd $USERNAME
 echo -en "${CYAN}Enter additional groups for $USERNAME (comma-separated, or leave blank for default groups): ${NC}"
 read GROUPS
 if [ -z "$GROUPS" ]; then
-    usermod -aG wheel,audio,video $USERNAME
+    usermod -aG wheel,audio,video,input,dialout $USERNAME
 else
-    usermod -aG wheel,audio,video,$GROUPS $USERNAME
+    usermod -aG wheel,audio,video,input,dialout,$GROUPS $USERNAME
 fi
 
 echo -en "${CYAN}Enter the hostname for this system: ${NC}"
