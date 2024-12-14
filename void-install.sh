@@ -109,7 +109,7 @@ mkdir /mnt/boot && mount -o rw,noatime /dev/${PART_PREFIX}2 /mnt/boot
 
 # Set repository and architecture
 echo -e "${GREEN}Setting up XBPS repository and architecture...${NC}"
-REPO="https://repo-default.voidlinux.org/current"
+REPO="https://repo-de.voidlinux.org/current"
 
 # Ask user for architecture
 echo -e "${YELLOW}Available architectures:${NC}"
